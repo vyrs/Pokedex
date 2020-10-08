@@ -10,7 +10,7 @@ import {
   AppBar,
   TextField,
 } from "@material-ui/core";
-import makeStyles  from "@material-ui/core/styles";
+import { makeStyles }  from "@material-ui/core/styles";
 import { toFirstCharUppercase } from "./constants";
 import SearchIcon from "@material-ui/icons/Search";
 import axios from "axios";
@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     color: "#000",
     backgroundColor: "#fff",
-    // backgroundColor: fade(theme.palette.common.white, 0.15),
     paddingLeft: "20px",
     paddingRight: "20px",
     margin: "10px auto",
@@ -113,14 +112,7 @@ const Pokedex = (props) => {
         <Grid container spacing={2} className={classes.pokedexContainer}>
           {Object.keys(pokemonData).map(
             (pokemonId) =>
-
-            // {id === 1 ? (
-            //     <button>imagem3d</button>
-    
-            //   ) : (
-            //     <button>não have</button>
-            //   )},
-
+              
               pokemonData[pokemonId].name.includes(filter) &&
               getPokemonCard(pokemonId)
           )}

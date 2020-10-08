@@ -5,6 +5,9 @@ import { toFirstCharUppercase } from "./constants";
 import axios from "axios";
 import bulbasaur from "./bulbasaur.gif";
 
+import Container from "@material-ui/core/Container";
+
+
 const Pokemon = (props) => {
   const { match, history } = props;
   const { params } = match;
@@ -29,48 +32,63 @@ const Pokemon = (props) => {
     const { front_default } = sprites;
     return (
       <>
-        <Typography variant="h1">
-          {`${id}.`} {toFirstCharUppercase(name)}
+        <Container 
+          style={{ backgroundColor: "#fff", borderRadius: "20px", padding: "30px" }} 
+          maxWidth="md"
 
-            <img src={front_default} />
-      
-        </Typography>
+        >
 
-        {id === 1 ? (
-          <img src={bulbasaur} />
+          <Typography variant="h1">
+            {`${id}.`} {toFirstCharUppercase(name)}
 
-        ) : (
-          <img style={{ width: "300px", height: "300px" }} src={fullImageUrl} />
-        )}
+              <img src={front_default} />
+        
+          </Typography>
 
-        <Typography variant="h3">Pokemon Info</Typography>
-        <Typography>
-          {"Species: "}
-          <Link href={species.url}>{species.name} </Link>
-        </Typography>
-        <Typography>Height: {height} </Typography>
-        <Typography>Weight: {weight} </Typography>
-        <Typography variant="h6"> Types:</Typography>
-        {types.map((typeInfo) => {
-          const { type } = typeInfo;
-          const { name } = type;
-          return <Typography key={name}> {`${name}`}</Typography>;
-        })}
+          {id === 1 ? (
+            <img src={bulbasaur} />
+
+          ) : (
+            <img style={{ width: "300px", height: "300px" }} src={fullImageUrl} />
+          )}
+
+          <Typography variant="h3">Pokemon Info</Typography>
+          <Typography>
+            {"Species: "}
+            <Link href={species.url}>{species.name} </Link>
+          </Typography>
+          <Typography>Height: {height} </Typography>
+          <Typography>Weight: {weight} </Typography>
+          <Typography variant="h6"> Types:</Typography>
+          {types.map((typeInfo) => {
+            const { type } = typeInfo;
+            const { name } = type;
+            return <Typography key={name}> {`${name}`}</Typography>;
+          })}
+
+        </Container>
       </>
     );
   };
 
   return (
     <>
-      {pokemon === undefined && <CircularProgress />}
-      {pokemon !== undefined && pokemon && generatePokemonJSX(pokemon)}
-      {pokemon === false && <Typography> Pokemon not found</Typography>}
+      <Container 
+          style={{ backgroundColor: "#fff", borderRadius: "30px", padding: "30px" }} 
+          maxWidth="md"
 
-      {pokemon !== undefined && (
-        <Button variant="contained" onClick={() => history.push("/")}>
-          back to pokedex
-        </Button>
-      )}
+        >
+
+          {pokemon === undefined && <CircularProgress />}
+          {pokemon !== undefined && pokemon && generatePokemonJSX(pokemon)}
+          {pokemon === false && <Typography> Pokemon not found</Typography>}
+
+          {pokemon !== undefined && (
+            <Button variant="contained" onClick={() => history.push("/")}>
+              back to pokedex
+            </Button>
+          )}
+        </Container>
     </>
   );
 };
