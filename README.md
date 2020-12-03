@@ -1,5 +1,5 @@
-## Software Developer Intern:  Pokédex
-Desafio da R2U
+## Pokédex feita com ReactJs
+link: https://amazing-goodall-61387b.netlify.app/
 
 
 
